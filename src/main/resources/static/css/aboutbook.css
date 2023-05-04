@@ -1,0 +1,36 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 50px 20px;
+}
+
+.book-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.book-cover {
+    width: 200px;
+    margin-right: 50px;
+}
+
+.book-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.book-title {
+    font-size: 3rem;
+    margin: 0 0 10px;
+}
+
+.book-author {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.book-summary {
+    font-size: 1.2rem;
+    line-height: 1.5;
+}

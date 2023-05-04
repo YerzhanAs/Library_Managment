@@ -1,0 +1,32 @@
+<html xmlns:th="http://www.thymeleaf.org"  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="layout/main.html">
+
+<div  layout:fragment="content">
+    <div class="row mt-5">
+        <div class="col-12">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Your books:</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each = "it : ${allusers}">
+                    <td th:text = "${it.fullName}"></td>
+                    <td th:text = "${it.email}"></td>
+                    <td>
+                     <span th:each="cat : ${it.books}" th:text="${cat.name}" style="display:block;">
+
+                     </span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+</html>

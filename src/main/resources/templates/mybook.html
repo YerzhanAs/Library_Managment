@@ -1,0 +1,48 @@
+<!DOCTYPE html >
+<html xmlns:th="http://www.thymeleaf.org"  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="layout/main.html">
+<head>
+    <title>My Books</title>
+    <link rel="stylesheet" th:href="@{/css/mybook.css}">
+</head>
+<body>
+<!--<div layout:fragment="content">-->
+<main layout:fragment="content">
+    <div class="book-list">
+        <h2>List of My Books</h2>
+        <ul th:each = "it : ${mybooks.getBooks()}">
+            <li>
+                <div class="book-item">
+                    <img th:src="@{/image/book.png}" alt="Book Cover">
+<!--                    <img th:src="@{'/viewphoto/'+${currentUser.userAvatar}}" class="my-3" style="width: 100%;">-->
+                    <div class="book-details">
+                        <h3 class="book-title" th:text = "${it.name}" >Book Title 1</h3>
+                        <p class="book-author" th:text = "${it.author}">Author Name</p>
+                        <p class="book-author" th:text = "${it.year}">Author Name</p>
+                    </div>
+                    <div class="delete-book">
+                        <form th:action="@{'/book/delete'}" method="post" onsubmit="return confirm('Are you sure you want to delete this book?');">
+                            <input type="hidden" name="id" th:value="${mybooks.id}">
+                            <input type="hidden" name="book_id" th:value="${it.id}">
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            </li>
+<!--            <li>-->
+<!--                <div class="book-item">-->
+<!--                    <img th:src="@{/image/book.png}" alt="Book Cover">-->
+<!--&lt;!&ndash;                    <img th:src="@{'/viewphoto/'+${currentUser.userAvatar}}" class="my-3" style="width: 100%;">&ndash;&gt;-->
+<!--                    <div class="book-details">-->
+<!--                        <h3 class="book-title">Book Title 2</h3>-->
+<!--                        <p class="book-author">Author Name</p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </li>-->
+            <!-- Add more books here as needed -->
+        </ul>
+    </div>
+</main>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<html xmlns:th="http://www.thymeleaf.org"  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/main.html">
+<div layout:fragment="content">
+    <div class="row mt-5">
+        <div class="col-6 offset-3">
+            <form th:action="@{'/book/all'}" method="post">
+                <input type="hidden" name="id" th:value="${books.id}">
+                <div class="form-group">
+                    <label >Name
+                    </label>
+                    <input type="text" class="form-control" name="item_name" th:value="${books!=null ? books.name:''}">
+                </div>
+                <div class="form-group">
+                    <label >Author
+                    </label>
+                    <input type="number" class="form-control" name="item_price" value="0" max="100000000" min="0" th:value="${books!=null?books.author:'0'}">
+                </div>
+                <div class="form-group">
+                    <label >Year
+                    </label>
+                    <input type="text" class="form-control" name="item_amount" th:value="${books!=null ? books.year:''}">
+                </div>
+
+                <div class="form-group">
+                    <button class="btn btn-success">Save</button>
+                </div>
+                <!-- Button trigger modal -->
+
+
+            </form>
+            </div>
+
+</div>
+</div>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/main.html">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Landing Page </title>
+
+    <!-- ==== STYLE.CSS ==== -->
+    <link rel="stylesheet" th:href="@{/css/mainpage.css}">
+
+</head>
+<body>
+<div layout:fragment="content">
+    <!--about----------------------->
+    <section id="about">
+        <!--text---------------------->
+        <div class="about-text">
+            <h1>Meloman</h1>
+            <h2>The Best Free Book Shop in Kazakhstan</h2>
+            <p>Enjoy the ultimate web design editor. Divi is like Photoshop or Sketch for the web. It brings an advanced design interface to WordPress that both beginners and experts will fall in love with. It's incredibly smart, super flexible, amazingly powerful and visual by nature. This is how designing for the web is meant to be done.</p>
+            <a th:href="@{'/login'}">Get Started</a>
+        </div>
+        <!--about-model----------------->
+        <div class="about-model">
+            <img th:src="@{/image/mainlogo.png}" alt="model"/>
+        </div>
+    </section>
+</div>
+</body>
+</html>

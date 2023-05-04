@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="layout/main.html">
+<head>
+    <meta charset="UTF-8">
+    <title>About Book</title>
+    <link rel="stylesheet" th:href="@{/css/aboutbook.css}">
+</head>
+<body>
+<div layout:fragment="content">
+<div class="container">
+    <form th:action="@{'/book/savebook'}" method="post">
+    <div class="book-info">
+        <input type="hidden" name="id" th:value="${book.id}">
+        <img th:src="@{/image/book.png}" alt="Book Cover" class="book-cover">
+        <div class="book-details">
+            <h1 class="book-title" th:text="${book.name}" name="book_name">The Great Gatsby</h1>
+            <label>Author:</label>
+            <h2 class="book-author" th:text="${book.author}" name="book_author">by F. Scott Fitzgerald</h2>
+            <label>Year:</label>
+            <h2 class="book-author"  th:text="${book.year}" name="book_year">by F. Scott Fitzgerald</h2>
+        </div>
+    </div>
+    <p class="book-summary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam lacinia justo sed ultrices commodo. Maecenas eu fringilla velit. Fusce laoreet pharetra odio, vel suscipit massa. Vestibulum blandit euismod ipsum, a facilisis purus dignissim ac. Nullam aliquet orci at velit aliquet consequat. Etiam sed velit ac mauris ultrices efficitur. Pellentesque commodo risus sit amet turpis sollicitudin euismod. Donec malesuada, lorem nec suscipit bibendum, eros magna pharetra urna, vel tristique velit nulla ut metus.</p>
+        <button class="w-47 btn btn-lg btn-primary" style="background-color: #120e78" type="submit">Add to my book</button>
+        <a th:href="@{'/book/editbook/'+${book.id}}"  class="w-47 btn btn-lg btn-primary" sec:authorize="hasAnyRole('ROLE_ADMIN')">Edit book</a>
+        <button type="button" class="btn btn-danger ml-2" data-toggle="modal" data-target="#deleteModal" >Delete</button>
+    </form>
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <form th:action="${'/book/deletebook'}" method="post">
+                <input type="hidden" name="id" th:value="${book.id}">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h5 >Are you sure?</h5>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" >Cancel</button>
+                        <button class="btn btn-danger" >DELETE</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>
